@@ -13,7 +13,7 @@ class Tela2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela2)
 
-        val radio = findViewById<RadioGroup>(R.id.radioGroupID) as RadioGroup
+        val radio = findViewById(R.id.radioGroupID) as RadioGroup
 
         val buttonResultado = findViewById<Button>(R.id.btnResultadoId)
 
@@ -58,10 +58,13 @@ class Tela2Activity : AppCompatActivity() {
             }else if (respostaa == 2){
                 builder.setTitle("Resultado")
                 builder.setMessage("Resposta Errada")
-                builder.setNeutralButton("Tentar Novamente") { dialog, i -> zerarResposta(respostaa) }
+                builder.setNeutralButton("Tentar Novamente") { dialog, i ->  }
                 builder.show()
             }else if (respostaa == 3){
-                Toast.makeText(this, "Resposta Errada", Toast.LENGTH_LONG).show()
+                builder.setTitle("Resultado")
+                builder.setMessage("Resposta Errada")
+                builder.setNeutralButton("Tentar Novamente") { dialog, i ->  }
+                builder.show()
             }else if (respostaa == 4){
                 Toast.makeText(this, "Resposta Errada", Toast.LENGTH_LONG).show()
             }else{
