@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 
 class Tela2Activity : AppCompatActivity() {
 
@@ -12,11 +13,13 @@ class Tela2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela2)
 
-        val radio = findViewById<RadioGroup>(R.id.radioGroupID)as RadioGroup
+        val radio = findViewById<RadioGroup>(R.id.radioGroupID) as RadioGroup
 
         val buttonResultado = findViewById<Button>(R.id.btnResultadoId)
 
         var respostaa = 0
+
+        val builder = AlertDialog.Builder(this) // alerta na tela toda
 
         fun zerarResposta(resposta: Int): Int { // zerar resultados
             var resposta = 0
@@ -48,9 +51,15 @@ class Tela2Activity : AppCompatActivity() {
         buttonResultado.setOnClickListener {
 
             if (respostaa == 1){
-                Toast.makeText(this, "Resposta Certa", Toast.LENGTH_LONG).show()
+                builder.setTitle("Resultado")
+                builder.setMessage("Resposta Certa")
+                builder.setPositiveButton("Ok") { dialog, i ->  }
+                builder.show()
             }else if (respostaa == 2){
-                Toast.makeText(this, "Resposta Errada", Toast.LENGTH_LONG).show()
+                builder.setTitle("Resultado")
+                builder.setMessage("Resposta Errada")
+                builder.setNeutralButton("Tentar Novamente") { dialog, i -> zerarResposta(respostaa) }
+                builder.show()
             }else if (respostaa == 3){
                 Toast.makeText(this, "Resposta Errada", Toast.LENGTH_LONG).show()
             }else if (respostaa == 4){
