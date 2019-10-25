@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 
@@ -17,7 +18,11 @@ class Tela2Activity : AppCompatActivity() {
 
         val buttonResultado = findViewById<Button>(R.id.btnResultadoId)
 
+        val oContador = findViewById<TextView>(R.id.contadorID) as TextView
+
         var respostaa = 0
+
+        var contador = 0
 
         val builder = AlertDialog.Builder(this) // alerta na tela toda
 
@@ -36,19 +41,24 @@ class Tela2Activity : AppCompatActivity() {
                 R.id.answer2->{
                     zerarResposta(respostaa)
                     respostaa = 2
+
                 }
                 R.id.answer3->{
                     zerarResposta(respostaa)
                     respostaa = 3
+
                 }
                 R.id.answer4->{
                     zerarResposta(respostaa)
                     respostaa = 4
+
                 }
             }
         }
 
         buttonResultado.setOnClickListener {
+
+            oContador.setText("Tentativas $contador"  )
 
             if (respostaa == 1){
                 builder.setTitle("Resultado")
@@ -61,30 +71,39 @@ class Tela2Activity : AppCompatActivity() {
                 builder.setTitle("Resultado")
                 builder.setMessage("Resposta Errada")
                 builder.setPositiveButton("Tentar Novamente") { dialog, which  ->
-                    Toast.makeText(this, "Boa Sorte", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, "Boa Sorte", Toast.LENGTH_SHORT).show()
+                    contador +=1
                 }
+
                 builder.show()
             }else if (respostaa == 3){
                 builder.setTitle("Resultado")
                 builder.setMessage("Resposta Errada")
                 builder.setPositiveButton("Tentar Novamente") { dialog, which ->
-                    Toast.makeText(this, "Boa Sorte", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, "Boa Sorte", Toast.LENGTH_SHORT).show()
+                    contador +=1
                 }
+
                 builder.show()
             }else if (respostaa == 4){
                 builder.setTitle("Resultado")
                 builder.setMessage("Resposta Errada")
                 builder.setPositiveButton("Tentar Novamente") {dialog, which ->
-                    Toast.makeText(this,"Boa Sorte", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, "Boa Sorte", Toast.LENGTH_SHORT).show()
+                    contador +=1
                 }
+
                 builder.show()
             }else{
                 builder.setTitle("Resultado")
                 builder.setMessage("Resposta Errada")
-                builder.setNeutralButton("Tentar Novamente") {dialog, i ->  }
+                builder.setNeutralButton("Tentar Novamente") {dialog, which ->
+                    //Toast.makeText(this, "Boa Sorte", Toast.LENGTH_SHORT).show()
+                    contador +=1
+                }
+
                 builder.show()
             }
-
         }
 
     }
