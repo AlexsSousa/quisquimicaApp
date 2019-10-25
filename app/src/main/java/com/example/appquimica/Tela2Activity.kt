@@ -12,7 +12,7 @@ class Tela2Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tela2)
+        setContentView(R.layout.activity_tela2) // sett
 
         val radio = findViewById(R.id.radioGroupID) as RadioGroup
 
