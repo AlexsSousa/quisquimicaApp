@@ -53,22 +53,36 @@ class Tela2Activity : AppCompatActivity() {
             if (respostaa == 1){
                 builder.setTitle("Resultado")
                 builder.setMessage("Resposta Certa")
-                builder.setPositiveButton("Ok") { dialog, i ->  }
+                builder.setPositiveButton("Proxima Pergunta") { dialog, which  ->
+                    Toast.makeText(this, "Proxima pagina", Toast.LENGTH_SHORT).show()
+                }
                 builder.show()
             }else if (respostaa == 2){
                 builder.setTitle("Resultado")
                 builder.setMessage("Resposta Errada")
-                builder.setNeutralButton("Tentar Novamente") { dialog, i ->  }
+                builder.setPositiveButton("Tentar Novamente") { dialog, which  ->
+                    Toast.makeText(this, "Boa Sorte", Toast.LENGTH_SHORT).show()
+                }
                 builder.show()
             }else if (respostaa == 3){
                 builder.setTitle("Resultado")
                 builder.setMessage("Resposta Errada")
-                builder.setNeutralButton("Tentar Novamente") { dialog, i ->  }
+                builder.setPositiveButton("Tentar Novamente") { dialog, which ->
+                    Toast.makeText(this, "Boa Sorte", Toast.LENGTH_SHORT).show()
+                }
                 builder.show()
             }else if (respostaa == 4){
-                Toast.makeText(this, "Resposta Errada", Toast.LENGTH_LONG).show()
+                builder.setTitle("Resultado")
+                builder.setMessage("Resposta Errada")
+                builder.setPositiveButton("Tentar Novamente") {dialog, which ->
+                    Toast.makeText(this,"Boa Sorte", Toast.LENGTH_SHORT).show()
+                }
+                builder.show()
             }else{
-                Toast.makeText(this, "Selecione uma Resposta", Toast.LENGTH_LONG).show()
+                builder.setTitle("Resultado")
+                builder.setMessage("Resposta Errada")
+                builder.setNeutralButton("Tentar Novamente") {dialog, i ->  }
+                builder.show()
             }
 
         }
